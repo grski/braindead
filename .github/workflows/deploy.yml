@@ -8,12 +8,14 @@ on:
 
 jobs:
   test:
-
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
+    env:
+      branch: ${{ github.ref }}
+      POETRY_TOKEN: ${{ secrets.POETRY_TOKEN }}
     strategy:
       matrix:
         python-version: [3.8]
-
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
@@ -34,24 +36,16 @@ jobs:
       - name: Test with pytest
         run: |
           pip install pytest
-  merge-pr:
-    if: github.event.pull_request.merged == true
-    needs: [test]
-    runs-on: ubuntu-latest
-    env:
-      branch: ${{ github.ref }}
-    steps:
       - uses: actions/checkout@v2
       - name: bumpversion
         run: |
           [ ${branch} = master ] && export PART=minor || [ ${branch} = develop ] && export PART=patch
-          python3 -m pip install --upgrade pip
-          pip3 install bumpversion
+          pip install bumpversion
           echo ${branch}
           echo ${PART}
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          /home/runner/.local/bin/bumpversion --message '[skip ci] Bump version: {current_version} → {new_version}' --list --verbose ${PART}
+          bumpversion --message '[skip ci] Bump version: {current_version} → {new_version}' --list --verbose ${PART}
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
@@ -59,3 +53,7 @@ jobs:
           branch: ${{ github.ref }}
           tags: true
           force: true
+      - name: Publish pypi package
+        run: |
+          poetry config pypi-token.pypi ${POETRY_TOKEN}
+          poetry publish --build

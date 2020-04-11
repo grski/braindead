@@ -1,9 +1,10 @@
 [tool.poetry]
 name = "braindead"
-version = "0.1.0"
-description = "Braindead is a braindead simple static site generator with markdown and code highlighting support."
+version = "0.1.3"
+description = "Braindead is a braindead simple static site generator for minimalists, that has support for markdown and code highlighting."
 authors = ["Olaf Górski"]
 license = "MIT"
+readme = "README.md"
 
 homepage = "https://grski.pl/"  # todo: change this later
 repository = "https://github.com/grski/braindead"
