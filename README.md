@@ -1,28 +1,139 @@
-CANT WE HAVE A SIMPLE SOFTWARE NOWADAYS?
-I JUST WANT TO BLOG IN PEACE.
+# Braindead
+Braindead is a braindead simple static site generator for minimalists, that has support for markdown and code highlighting.
+I created this package simply to have a bit of fun and because I'm tired of bloated software.
 
-README: TODO.
+Can't we just have [simple software nowadays](https://tonsky.me/blog/disenchantment/) that does what it needs to do and nothing more?
+Existing solutions felt like they are too much for my needs. So I built this thing. It's still under active development.
 
-Html template based on: [Kiss template](https://github.com/ribice)
-todos:
-    header.html
-    <!-- <meta property='og:image' content='{{ site.logo }}'> todo: add  The recommended resolution for the OG image is 1200x627 pixels, the size — up to 5MB.  -->
-    <!-- todo: twitter cards https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started -->
-    <!--
-    <link rel="manifest" href="{{ BASE_URL }}static/site.webmanifest">
-    <link rel="mask-icon" href="{{ BASE_URL }}static/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ BASE_URL }}static/styles/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ BASE_URL }}static/styles/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ BASE_URL }}static/favicon-16x16.png">
-    -->
-    
-    tags
-    tests
-    statics
-    pipelines
-    navigation
-    documentation
-    better config
-    support for i18n (?)
-    support for multiple templates
-    automatic description generated (in head tags too!)
+Live example: [grski.pl](https://grski.pl/)
+
+One of my main ideals here is to create template that is as fast as it gets. Generated pages take around 10-15 KB in total.
+No JavaScript used here, at least in the base template. Just css/html.
+
+You are free to change that though by creating your own templates. More on that below.
+
+Benefits of simple approach:
+
+![Google PageSpeed Insights withh 100 score](https://imgur.com/7IwldRE.png)
+![requests made if loading this template](https://imgur.com/GmYcP08.png)
+ 
+Default template scores 100/100 on Google PageSpeed Insights and very fast load times.
+
+Default template design looks like this:
+
+![Default template of braindead](https://imgur.com/oPdgdvW.png)
+It's based on: [Kiss template](https://github.com/ribice), slightly modified - with minimized styles. In the future I'll probably slim them down even more.
+
+It's also eco friendly - it uses less power by not being a bloatware. 
+
+# Installation
+```
+pip install braindead
+```
+[PyPi page](https://pypi.org/project/braindead/)
+
+# Usage
+Create `index.md` and run `braindead` that's it. You'll find your generated site in `dist` directory.
+It can be empty or not - your choice. If you want index  to contain just the posts - leave it empty.
+
+That's the minimal setup you need. That'll generate index.html for you, but well, it's not enough, right?
+More robust structure you can use is:
+```bash
+pages/
+  page.md
+posts/
+  post.md
+index.md
+site.toml
+```
+
+## Example post/page structure:
+
+```markdown
+Title: Title of the post or of the page 
+Date: 2018-03-22
+Authors: Olaf Górski
+Description: Description of the post/page. If not provided it'll default to first 140 chars of the content. 
+
+CONTENT GOES HERE...
+```
+
+All of the metadata used here will be available during given page rendering. You can add more keys and metadata if you'd like. 
+
+## Config
+
+All of the variables that are used to generate the page can be overwritten by creating `site.toml` file, but it's not required to get started.
+
+```toml
+BASE_URL = "/"  # give full url ending with slash here - eg. if you host your blog on https://grski.pl/ enter it there.
+
+[site]
+title = "Site generated with braindead"  # base title of the website
+description = "Just a description of site generated in braindead"  # description used in the meta tags
+content = ""  # this will display under heading
+name = "braindeadsite" # og tags
+logo = "logo_url"  # url to the logo for og tags
+heading = "Braindead Example"  # heading at the top of the site
+github = "https://github.com/grski"  # link to your github
+linkedin = "https://linkedin.com/in/olafgorski"  # link to your li
+copy_text = "Olaf Górski"  # copy text in the footer
+copy_link = "https://grski.pl"  # and copy link of the footer
+```
+
+None of these are required. You can overwrite none, one or more. Your choice.
+
+# Code higlighting
+Just do
+<pre>
+```python
+Your code here
+```</pre>
+
+[List of languages supported by pygments can be found here.](https://pygments.org/languages/)
+
+# Creating your own templates
+TODO
+
+# Technology
+This bases on 
+[toml](https://github.com/uiri/toml), 
+[markdown](https://github.com/Python-Markdown/markdown) and [jinja2](https://github.com/pallets/jinja).
+
+Toml is used for configuration.
+Markdown to render all the .md and .markdows into proper html.
+Lastly jinja2 to add some contexts here and there.
+
+Formatting of the code is done using [black](https://github.com/psf/black), [isort](https://github.com/timothycrosley/isort).
+[flake8](https://gitlab.com/pycqa/flake8), [autoflake](https://github.com/myint/autoflake) and [bandit](https://github.com/PyCQA/bandit/) to check for potential vulns. 
+
+Versioning is done with [bumpversion](https://github.com/peritus/bumpversion).
+Patch for merges to develop, minor for merged to master. Merge to master means release to pypi.
+
+And wonderful [poetry](https://github.com/python-poetry/poetry) as dependency manager. BTW pipenv should die.
+
+Code highligthing is done with [pygments](https://github.com/pygments/pygments).
+
+I use type hinting where it's possible.
+
+To start developing you need to install poetry
+`pip install poetry==0.1.0` and then just `poetry install`. 
+
+# Known make commands
+```bash
+flake
+isort
+isort-inplace
+bandit
+black
+linters
+bumpversion
+black-inplace
+autoflake-inplace
+format-inplace
+```
+Most important ones are `make linters` and `make format-inplace`. Before each commit it's required to run these checks.
+
+# License
+MIT
+
+

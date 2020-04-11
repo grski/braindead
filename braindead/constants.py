@@ -13,4 +13,5 @@ BASE_URL: str = CONFIG["BASE_URL"]
 DIST_DIR: str = CONFIG.get("DIST_DIR", "dist")
 TEMPLATE_DIR: str = CONFIG.get("TEMPLATE_DIR")
 
+# todo other template flow (git clone?)
 TEMPLATE_DIR = TEMPLATE_DIR if TEMPLATE_DIR else os.path.join(PACKAGE_LOCATION, "default_template")
