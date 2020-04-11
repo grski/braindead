@@ -39,7 +39,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: bumpversion
         run: |
-          [ ${branch} = master ] && export PART=minor || [ ${branch} = develop ] && export PART=patch
+          [ ${branch} = master ] && export PART=minor
+          [ ${branch} = develop ] && export PART=patch
           pip install bumpversion
           echo ${branch}
           echo ${PART}
