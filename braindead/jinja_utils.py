@@ -15,4 +15,6 @@ def render_jinja_template(template: Template, context: dict) -> str:
     return template.render(context_with_globals)
 
 
-jinja_environment = Environment(loader=FileSystemLoader(TEMPLATE_DIR), undefined=SilentUndefined, autoescape=True)
+jinja_environment: Environment = Environment(  # nosec
+    loader=FileSystemLoader(TEMPLATE_DIR), undefined=SilentUndefined, autoescape=False
+)
