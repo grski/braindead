@@ -1,0 +1,13 @@
+BASE_URL = "/"  # give full url ending with slash here
+
+[site]
+title = "Site generated with braindead"
+description = "Just a description of site generated in braindead"
+content = ""
+name = "braindeadsite"
+logo = "logo_url"
+heading = "Braindead Example"
+github = "https://github.com/grski"
+linkedin = "https://linkedin.com/in/olafgorski"
+copy_text = "Olaf Górski"
+copy_link = "https://grski.pl"

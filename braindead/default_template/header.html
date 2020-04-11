@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE }}">
+
+<head>
+    <title>{% if title %} {{ title }} {% else %} {{ site.title }}{% endif %} </title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{{ site.description }}" />
+
+    <meta name="robots" content="index, follow">
+    <meta property="og:title' content='{{ site.title }}">
+    <meta property="og:description' content='{{ site.description }}">
+    <meta property="og:url' content='{{ BASE_URL }}">
+    <meta property="og:site_name' content='{{ site.name }}">
+    <meta property="og:type' content='website">
+    <meta property='article:section' content=''>
+    <meta property='og:updated_time' content='{{ date.now }}T00:00:00Z' />
+
+    <link rel="stylesheet" href="{{ BASE_URL }}static/styles/style.min.css" />
+    <link rel="shortcut icon" type="image/png" href="{{ BASE_URL }}static/favicon.png"/>
+    <meta name="theme-color" content="#ffffff">
+</head>

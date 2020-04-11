@@ -1,0 +1,24 @@
+{% include 'header.html' %}
+
+<body>
+    {% include 'nav.html' %}
+    <section class="section">
+        <div class="container">
+            {% for article in articles %}
+            <article>
+                <div class="subtitle tags is-6 is-pulled-right">
+                    <!-- <a class="subtitle is-6" href="">#html</a> | <a class="subtitle is-6" href="{{ BASE_URL }}">#themes</a>-->
+                </div>
+                <h2 class="subtitle is-6 date">{{ article.date }}</h2>
+                <h1 class="title"><a href="{{ article.url }}">{{ article.title }}</a></h1>
+                <div class="content">
+                    {{ article.summary }}
+                    <a class="button is-link" href="{{ article.url }}">Read more</a>
+                </div>
+            </article>
+
+            {% endfor %}
+        </div>
+    </section>
+
+    {% include 'footer.html' %}

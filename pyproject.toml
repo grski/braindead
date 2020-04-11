@@ -1,0 +1,61 @@
+[tool.poetry]
+name = "braindead"
+version = "0.1.0"
+description = "Braindead is a braindead simple static site generator with markdown and code highlighting support."
+authors = ["Olaf Górski"]
+license = "MIT"
+
+homepage = "https://grski.pl/"  # todo: change this later
+repository = "https://github.com/grski/braindead"
+documentation = "https://github.com/grski/braindead"  # todo: change this later
+keywords = ["ssg", "static site generator", "braindead"]
+
+[tool.poetry.scripts]
+braindead = "braindead.rendering:render_blog"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+jinja2 = "^2.11.1"
+markdown = "^3.2.1"
+pygments = "^2.6.1"
+toml = "^0.10.0"
+
+[tool.poetry.dev-dependencies]
+black = "^19.10b0"
+isort = "^4.3.21"
+flake8 = "^3.7.9"
+bandit = "^1.6.2"
+autoflake = "^1.3.1"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
+[tool.black]
+line-length = 120
+target-version = ['py38']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+[tool.isort]
+line_length = 120
+known_future_library = "future"
+known_first_party = "constants,context,files,jinja_utils,main"
+include_trailing_comma = "True"
+known_third_party = "toml,jinja2,markdown,pygments"
+multi_line_output = 3
+indent = '    '
+skip = "venv,dist,pages,posts,default_template"
+sections = "FUTURE, STDLIB, DJANGO, THIRDPARTY, FIRSTPARTY, LOCALFOLDER"
