@@ -6,6 +6,7 @@ from markdown import Markdown
 from braindead.context import add_url_to_context, build_article_context
 from braindead.files import find_all_pages, find_all_posts, gather_statics, save_output
 from braindead.jinja_utils import jinja_environment, render_jinja_template
+from braindead.markdown_utils import md
 
 
 def render_blog() -> None:
@@ -18,7 +19,6 @@ def render_blog() -> None:
 
 def render_all_pages() -> None:
     """ Rendering of all the pages for the blog. markdown -> html with jinja -> html"""
-    md: Markdown = Markdown(extensions=["tables", "fenced_code", "codehilite", "meta", "footnotes"])
     template: Template = jinja_environment.get_template("index.html")
     for filename in find_all_pages():
         render_page(filename=filename, md=md, template=template)
@@ -33,9 +33,7 @@ def render_page(filename: str, md: Markdown, template: Template, additional_cont
 
 
 def render_posts() -> Iterable[dict]:
-    md: Markdown = Markdown(extensions=["tables", "fenced_code", "codehilite", "meta", "footnotes"])
     template: Template = jinja_environment.get_template("detail.html",)
-
     return [render_and_save_post(md=md, filename=filename, template=template) for filename in find_all_posts()]
 
 

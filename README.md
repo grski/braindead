@@ -47,6 +47,13 @@ index.md
 site.toml
 ```
 
+The url for generated html will be `{DIR_LOCATION}/{FILENAME}.html`,
+ so url generated will be `{BASE_URL}/{DIR_LOCATION}/{FILENAME}.html` in order to change that, add
+```markdown
+Slug: custom-location
+```
+To your post/page header - then the location will be `{BASE_URL}/{SLUG}.html`
+
 ## Example post/page structure:
 
 ```markdown
