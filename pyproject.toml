@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "braindead"
-version = "0.1.6"
+version = "0.1.7"
 description = "Braindead is a braindead simple static site generator for minimalists, that has support for markdown and code highlighting."
 authors = ["Olaf Górski"]
 license = "MIT"
