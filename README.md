@@ -2,6 +2,8 @@
 Braindead is a braindead simple static site generator for minimalists, that has support for markdown and code highlighting.
 I created this package simply to have a bit of fun and because I'm tired of bloated software.
 
+You can read more about the idea behind it on [medium](https://medium.com/thirty3hq/how-i-created-my-blogging-system-in-less-than-100-lines-of-code-to-save-the-environment-dd848cc29c02) or [my blog](https://grski.pl/posts/python/creating-braindead.html)
+
 Can't we just have [simple software nowadays](https://tonsky.me/blog/disenchantment/) that does what it needs to do and nothing more?
 Existing solutions felt like they are too much for my needs. So I built this thing. It's still under active development.
 
