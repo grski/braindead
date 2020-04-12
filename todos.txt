@@ -26,4 +26,3 @@ todos:
     support for multiple templates
     inform that date is a required field
     use pyproject.toml instead of site.toml
-    automatic description generated (in head tags too!) + meta tag
