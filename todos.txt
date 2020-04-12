@@ -20,6 +20,8 @@ todos:
     navigation
     documentation
     better config
-    support for i18n (?)
+    sitemap generator
+    support for i18n???
+    naming url with slug
     support for multiple templates
     automatic description generated (in head tags too!) + meta tag

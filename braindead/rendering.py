@@ -29,7 +29,7 @@ def render_page(filename: str, md: Markdown, template: Template, additional_cont
     page_html: str = render_markdown_to_html(md=md, filename=filename)
     jinja_context: dict = {"page": {"content": page_html}, **additional_context}
     output: str = render_jinja_template(template=template, context=jinja_context)
-    save_output(original_file_name=filename, output=output)
+    save_output(original_file_name=jinja_context.get("slug", filename), output=output)
 
 
 def render_posts() -> Iterable[dict]:
@@ -44,7 +44,7 @@ def render_and_save_post(md, filename, template) -> dict:
     article_html: str = render_markdown_to_html(md=md, filename=filename)
     jinja_context: dict = build_article_context(article_html=article_html, md=md)
     output: str = render_jinja_template(template=template, context=jinja_context)
-    new_filename: str = save_output(original_file_name=filename, output=output)
+    new_filename: str = save_output(original_file_name=jinja_context.get("slug", filename), output=output)
     return add_url_to_context(jinja_context=jinja_context, new_filename=new_filename)
 
 
