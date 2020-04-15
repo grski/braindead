@@ -2,6 +2,8 @@
 Braindead is a braindead simple static site generator for minimalists, that has support for markdown and code highlighting.
 I created this package simply to have a bit of fun and because I'm tired of bloated software.
 
+You can read more about the idea behind it on [medium](https://medium.com/thirty3hq/how-i-created-my-blogging-system-in-less-than-100-lines-of-code-to-save-the-environment-dd848cc29c02) or [my blog](https://grski.pl/posts/python/creating-braindead.html)
+
 Can't we just have [simple software nowadays](https://tonsky.me/blog/disenchantment/) that does what it needs to do and nothing more?
 Existing solutions felt like they are too much for my needs. So I built this thing. It's still under active development.
 
@@ -17,15 +19,15 @@ Benefits of simple approach:
 ![Google PageSpeed Insights withh 100 score](https://imgur.com/7IwldRE.png)
 ![requests made if loading this template](https://imgur.com/GmYcP08.png)
  
-Default template scores 100/100 on Google PageSpeed Insights and very fast load times.
+Default template scores 100/100 on Google PageSpeed Insights and has very fast load times.
 
 Default template design looks like this:
 
 ![Default template of braindead](https://imgur.com/oPdgdvW.png)
 It's based on: [Kiss template](https://github.com/ribice), slightly modified - with minimized styles. In the future I'll probably slim them down even more.
 
-It's also eco friendly - it uses less power by not being a bloatware. 
-
+It's also eco friendly - it uses less power by not being a bloatware. [CarbonReport of the demo](https://www.websitecarbon.com/website/grski-pl/)
+![Carbon report of the grski.pl blog](https://imgur.com/cfQJqQgl.png)
 # Installation
 ```
 pip install braindead
@@ -46,6 +48,13 @@ posts/
 index.md
 site.toml
 ```
+
+The url for generated html will be `{DIR_LOCATION}/{FILENAME}.html`,
+ so url generated will be `{BASE_URL}/{DIR_LOCATION}/{FILENAME}.html` in order to change that, add
+```markdown
+Slug: custom-location
+```
+To your post/page header - then the location will be `{BASE_URL}/{SLUG}.html`
 
 ## Example post/page structure:
 
