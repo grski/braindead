@@ -19,15 +19,15 @@ Benefits of simple approach:
 ![Google PageSpeed Insights withh 100 score](https://imgur.com/7IwldRE.png)
 ![requests made if loading this template](https://imgur.com/GmYcP08.png)
  
-Default template scores 100/100 on Google PageSpeed Insights and very fast load times.
+Default template scores 100/100 on Google PageSpeed Insights and has very fast load times.
 
 Default template design looks like this:
 
 ![Default template of braindead](https://imgur.com/oPdgdvW.png)
 It's based on: [Kiss template](https://github.com/ribice), slightly modified - with minimized styles. In the future I'll probably slim them down even more.
 
-It's also eco friendly - it uses less power by not being a bloatware. 
-
+It's also eco friendly - it uses less power by not being a bloatware. [CarbonReport of the demo](https://www.websitecarbon.com/website/grski-pl/)
+![Carbon report of the grski.pl blog](https://imgur.com/cfQJqQgl.png)
 # Installation
 ```
 pip install braindead
