@@ -16,13 +16,9 @@ todos:
     tags
     tests
     statics
-    pipelines
     navigation
-    documentation
+    documentation: creating templates
     better config
     sitemap generator
     support for i18n???
-    naming url with slug
-    support for multiple templates
     inform that date is a required field
-    use pyproject.toml instead of site.toml
