@@ -53,9 +53,9 @@ exclude = '''
 [tool.isort]
 line_length = 120
 known_future_library = "future"
-known_first_party = "constants,context,files,jinja_utils,main"
+known_first_party = "constants,context,files,jinja_utils,main,braindead"
 include_trailing_comma = "True"
-known_third_party = "toml,jinja2,markdown,pygments"
+known_third_party = "toml,jinja2,markdown,pygments,toml"
 multi_line_output = 3
 indent = '    '
 skip = "venv,dist,pages,posts,default_template"
