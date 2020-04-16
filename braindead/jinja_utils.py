@@ -11,7 +11,7 @@ class SilentUndefined(Undefined):
 
 def render_jinja_template(template: Template, context: dict) -> str:
     """ Rendering jinja template with a context and global config. """
-    context_with_globals = {**context, **CONFIG}
+    context_with_globals = {**context, "config": CONFIG}
     return template.render(context_with_globals)
 
 

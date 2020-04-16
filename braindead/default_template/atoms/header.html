@@ -2,22 +2,22 @@
 <html lang="{{ language }}">
 
 <head>
-    <title>{% if title %} {{ title }} {% else %} {{ title }}{% endif %}{% if author %} - {{ author }}{% endif %}</title>
+    <title>{% if title %}{{ title}}{% else %}{{ config.title }}{% endif %}{% if config.author %} - {{ config.author }}{% endif %}</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="{% if description %}{{ description }}{% else %}{{ description }}{% endif %}" />
+    <meta name="description" content="{% if description %}{{ description }}{% else %}{{ config.description }}{% endif %}" />
 
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="{{ title }}">
-    <meta property="og:description" content="{% if description %}{{ description }}{% else %}{{ description }}{% endif %}">
-    <meta property="og:url" content="{{ base_url }}">
-    <meta property="og:site_name" content="{{ name }}">
+    <meta property="og:title" content="{{ config.title }}">
+    <meta property="og:description" content="{% if description %}{{ description }}{% else %}{{ config.description }}{% endif %}">
+    <meta property="og:url" content="{{ config.base_url }}">
+    <meta property="og:site_name" content="{{ config.name }}">
     <meta property="og:type" content="website">
     <meta property="article:section" content="">
     <meta property="og:updated_time" content="{% if date %}{{ date }}{% else %}{{ date.now }}{% endif %}T00:00:00Z" />
 
-    <link rel="stylesheet" href="{{ base_url }}static/styles/style.min.css" />
-    <link rel="stylesheet" href="{{ base_url }}static/styles/highlighting.min.css" />
-    <link rel="shortcut icon" type="image/png" href="{{ base_url }}static/favicon.png"/>
+    <link rel="stylesheet" href="{{ config.base_url }}static/styles/style.min.css" />
+    <link rel="stylesheet" href="{{ config.base_url }}static/styles/highlighting.min.css" />
+    <link rel="shortcut icon" type="image/png" href="{{ config.base_url }}static/favicon.png"/>
     <meta name="theme-color" content="#ffffff">
 </head>
