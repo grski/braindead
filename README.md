@@ -46,11 +46,11 @@ pages/
 posts/
   post.md
 index.md
-site.toml
+toml
 ```
 
 The url for generated html will be `{DIR_LOCATION}/{FILENAME}.html`,
- so url generated will be `{site.base_url}/{DIR_LOCATION}/{FILENAME}.html` in order to change that, add
+ so url generated will be `{base_url}/{DIR_LOCATION}/{FILENAME}.html` in order to change that, add
 ```markdown
 Slug: custom-location
 ```
