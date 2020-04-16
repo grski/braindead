@@ -50,7 +50,7 @@ site.toml
 ```
 
 The url for generated html will be `{DIR_LOCATION}/{FILENAME}.html`,
- so url generated will be `{BASE_URL}/{DIR_LOCATION}/{FILENAME}.html` in order to change that, add
+ so url generated will be `{site.base_url}/{DIR_LOCATION}/{FILENAME}.html` in order to change that, add
 ```markdown
 Slug: custom-location
 ```
@@ -71,12 +71,13 @@ All of the metadata used here will be available during given page rendering. You
 
 ## Config
 
-All of the variables that are used to generate the page can be overwritten by creating `site.toml` file, but it's not required to get started.
+All of the variables that are used to generate the page can be overwritten by creating `pyproject.toml` file, but it's not required to get started.
+Example of your `pyproject` `tool.braindead.site` section (these are also the defaults):
 
 ```toml
-BASE_URL = "/"  # give full url ending with slash here - eg. if you host your blog on https://grski.pl/ enter it there.
-
-[site]
+[tool.braindead.site]
+base_url = "" # give full url ending with slash here - eg. if you host your blog on https://grski.pl/ enter it there.
+author = "Olaf Górski"  # author/owner of the site <- will be appended to the title
 title = "Site generated with braindead"  # base title of the website
 description = "Just a description of site generated in braindead"  # description used in the meta tags
 content = ""  # this will display under heading
@@ -87,6 +88,7 @@ github = "https://github.com/grski"  # link to your github
 linkedin = "https://linkedin.com/in/olafgorski"  # link to your li
 copy_text = "Olaf Górski"  # copy text in the footer
 copy_link = "https://grski.pl"  # and copy link of the footer
+language = "en"  # default language set in the top level html lang property
 ```
 
 None of these are required. You can overwrite none, one or more. Your choice.
