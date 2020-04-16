@@ -3,14 +3,14 @@ todos:
     just_titles: true/false
     if not github/ln links: dont display
     header.html
-    <!-- <meta property='og:image' content='{{ logo }}'> todo: add  The recommended resolution for the OG image is 1200x627 pixels, the size — up to 5MB.  -->
+    <!-- <meta property='og:image' content='{{ config.logo }}'> todo: add  The recommended resolution for the OG image is 1200x627 pixels, the size — up to 5MB.  -->
     <!-- todo: twitter cards https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started -->
     <!--
-    <link rel="manifest" href="{{ base_url }}static/webmanifest">
-    <link rel="mask-icon" href="{{ base_url }}static/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ base_url }}static/styles/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ base_url }}static/styles/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ base_url }}static/favicon-16x16.png">
+    <link rel="manifest" href="{{ config.base_url }}static/config.webmanifest">
+    <link rel="mask-icon" href="{{ config.base_url }}static/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ config.base_url }}static/styles/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ config.base_url }}static/styles/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ config.base_url }}static/favicon-16x16.png">
     -->
 
     tags
@@ -18,7 +18,6 @@ todos:
     statics
     navigation
     documentation: creating templates
-    validate if base_url is there and other required configs -> user friendly
     better config
     sitemap generator
     support for i18n???

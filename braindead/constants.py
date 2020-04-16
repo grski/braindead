@@ -8,11 +8,11 @@ USER_CONFIG_FILE = "pyproject.toml"
 def get_user_config():
     if not os.path.exists(USER_CONFIG_FILE):
         return {}
-    return toml.load(USER_CONFIG_FILE).get("tool", {}).get("braindead", {}).get("site", {})
+    return toml.load(USER_CONFIG_FILE).get("tool", {}).get("braindead", {}).get("config", {})
 
 
 PACKAGE_LOCATION: str = os.path.split(os.path.realpath(__file__))[0]
-DEFAULT_CONFIG: dict = toml.load(os.path.join(PACKAGE_LOCATION, "default_config.toml"))["site"]
+DEFAULT_CONFIG: dict = toml.load(os.path.join(PACKAGE_LOCATION, "default_config.toml"))["config"]
 USER_CONFIG: dict = get_user_config()
 CONFIG: dict = {**DEFAULT_CONFIG, **USER_CONFIG}
 BASE_URL: str = CONFIG["base_url"]
