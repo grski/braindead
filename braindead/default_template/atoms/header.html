@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="{{ language }}">
+<html lang="{% if language %}{{ language }}{% else %}{{ config.language }}{% endif %}">
 
 <head>
-    <title>{% if title %}{{ title}}{% else %}{{ config.title }}{% endif %}{% if config.author %} - {{ config.author }}{% endif %}</title>
+    <title>{% if title %}{{ title }}{% else %}{{ config.title }}{% endif %}{% if config.author %} - {{ config.author }}{% endif %}</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="{% if description %}{{ description }}{% else %}{{ config.description }}{% endif %}" />
