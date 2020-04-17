@@ -1,5 +1,5 @@
 [config]
-base_url = "file:///home/grski/dev/private/braindead/dist/"  # give full url ending with slash here
+base_url = "/"  # give full url ending with slash here
 title = "Site generated with braindead"
 description = "Just a description of site generated in braindead"
 author = "Olaf Górski"

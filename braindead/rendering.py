@@ -1,4 +1,3 @@
-import sys
 from time import time
 from typing import Iterable, List
 
@@ -18,7 +17,7 @@ def render_blog() -> None:
     pages: List[str] = render_all_pages()
     render_index(posts=posts)
     gather_statics()
-    sys.stdout.write(
+    print(
         f"Rendered {len(posts+pages)+1} files! Pages: {len(pages)+1} and posts: {len(posts)}\n"
         f"Took: {time()-started_at:.3f} seconds.\n"
     )

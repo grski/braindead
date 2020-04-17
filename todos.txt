@@ -22,3 +22,5 @@ todos:
     sitemap generator
     support for i18n???
     inform that date is a required field
+    live server
+    url validation
