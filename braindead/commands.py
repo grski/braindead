@@ -47,8 +47,8 @@ class ServeCommand(Command):
                 self.line(f"\n Serving content at localhost:{serve_port}...")
                 httpd.serve_forever()
             except KeyboardInterrupt:
-                self.line(f"Keyboard interrupt detected, shutting down the server gracefully.")
                 httpd.server_close()
+                self.line(f"Keyboard interrupt detected, shutting down the server gracefully.")
 
 
 def cli() -> int:

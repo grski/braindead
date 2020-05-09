@@ -1,7 +1,5 @@
 todos:
     tests
-    just_titles: true/false
-    if not github/ln links: dont display
     header.html
     <!-- <meta property='og:image' content='{{ config.logo }}'> todo: add  The recommended resolution for the OG image is 1200x627 pixels, the size — up to 5MB.  -->
     <!-- todo: twitter cards https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started -->
@@ -25,3 +23,5 @@ todos:
     inform that date is a required field
 
     live server  # DONE
+    just_titles: true/false  # DONE
+    if not github/ln links: dont display  # DONE

@@ -93,6 +93,7 @@ linkedin = "https://linkedin.com/in/olafgorski"  # link to your li
 copy_text = "Olaf Górski"  # copy text in the footer
 copy_link = "https://grski.pl"  # and copy link of the footer
 language = "en"  # default language set in the top level html lang property
+just_titles = 0  # if set to 1 the index page will only display titles without descriptions on default template
 ```
 
 None of these are required. You can overwrite none, one or more. Your choice.

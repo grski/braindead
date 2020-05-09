@@ -12,7 +12,7 @@
                 <h3 class="subtitle is-6 date">{{ article.date }}</h3>
                 <h2 class="title"><a href="{{ article.url }}">{{ article.title }}</a></h2>
                 <div class="content">
-                    {{ article.description }}
+                    {% if not config.just_titles and article.description is not none %}{{ article.description }}{% endif %}
                     <a class="button is-link" href="{{ article.url }}">Read more</a>
                 </div>
             </article>
