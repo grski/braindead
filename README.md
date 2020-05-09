@@ -35,7 +35,11 @@ pip install braindead
 [PyPi page](https://pypi.org/project/braindead/)
 
 # Usage
-Create `index.md` and run `braindead` that's it. You'll find your generated site in `dist` directory.
+Create `index.md` and run `braindead run` that's it. You'll find your generated site in `dist` directory and the site being served at `localhost:1644`.
+To get more context/help and available commands run `braindead` or `braindead help`.
+
+Known commands so far: `run`, `build`, `serve`.
+
 It can be empty or not - your choice. If you want index  to contain just the posts - leave it empty.
 
 That's the minimal setup you need. That'll generate index.html for you, but well, it's not enough, right?
@@ -123,6 +127,8 @@ Patch for merges to develop, minor for merged to master. Merge to master means r
 And wonderful [poetry](https://github.com/python-poetry/poetry) as dependency manager. BTW pipenv should die.
 
 Code highligthing is done with [pygments](https://github.com/pygments/pygments).
+
+CLI is done with [cleo](https://github.com/sdispater/cleo)
 
 I use type hinting where it's possible.
 
