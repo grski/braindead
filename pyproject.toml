@@ -12,7 +12,7 @@ documentation = "https://github.com/grski/braindead"  # todo: change this later
 keywords = ["ssg", "static site generator", "braindead"]
 
 [tool.poetry.scripts]
-braindead = "braindead.__main__.application.run"
+braindead = "braindead.commands.cli"
 
 [tool.poetry.dependencies]
 python = "^3.8"

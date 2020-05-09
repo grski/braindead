@@ -2,7 +2,7 @@ import functools
 import http.server
 import socketserver
 
-from cleo import Command
+from cleo import Application, Command
 
 from braindead.constants import DIST_DIR
 from braindead.rendering import render_blog
@@ -49,3 +49,11 @@ class ServeCommand(Command):
             except KeyboardInterrupt:
                 self.line(f"Keyboard interrupt detected, shutting down the server gracefully.")
                 httpd.server_close()
+
+
+def cli() -> int:
+    cleo_application: Application = Application()
+    cleo_application.add(RunCommand())
+    cleo_application.add(BuildCommand())
+    cleo_application.add(ServeCommand())
+    return cleo_application.run()
