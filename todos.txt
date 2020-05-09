@@ -13,14 +13,15 @@ todos:
     <link rel="icon" type="image/png" sizes="16x16" href="{{ config.base_url }}static/favicon-16x16.png">
     -->
 
+    i18n
     tags
     tests
     statics
     navigation
-    documentation: creating templates
     better config
-    sitemap generator
-    support for i18n???
-    inform that date is a required field
-    live server
     url validation
+    sitemap generator
+    documentation: creating templates
+    inform that date is a required field
+
+    live server  # DONE

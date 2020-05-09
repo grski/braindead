@@ -12,7 +12,7 @@ documentation = "https://github.com/grski/braindead"  # todo: change this later
 keywords = ["ssg", "static site generator", "braindead"]
 
 [tool.poetry.scripts]
-braindead = "braindead.rendering:render_blog"
+braindead = "braindead.__main__"
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -20,6 +20,7 @@ jinja2 = "^2.11.1"
 markdown = "^3.2.1"
 pygments = "^2.6.1"
 toml = "^0.10.0"
+cleo = "^0.8.1"
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"
@@ -27,10 +28,6 @@ isort = "^4.3.21"
 flake8 = "^3.7.9"
 bandit = "^1.6.2"
 autoflake = "^1.3.1"
-
-[build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
 
 [tool.black]
 line-length = 120
@@ -60,3 +57,7 @@ multi_line_output = 3
 indent = '    '
 skip = "venv,dist,pages,posts,default_template"
 sections = "FUTURE, STDLIB, DJANGO, THIRDPARTY, FIRSTPARTY, LOCALFOLDER"
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
