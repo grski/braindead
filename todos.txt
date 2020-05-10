@@ -19,17 +19,20 @@ todos:
     better config
     url validation
     sitemap generator
+    disable i18n option
     write docs about i18n
     add hot auto reload during dev
     add docs about helper functions
     documentation: creating templates
     inform that date is a required field
+    remember locale selection with local storage
     extend custom functions to allow other helpers
     check if page slug conflicts with article slugs/urls
     add extended i18n to md files (prerender the md with jinja)
     rendering different sections with different mds in one page
 
-    i18n  # DONE
-    live server  # DONE
-    just_titles: true/false  # DONE
+    locale auto redirection for user browser language  # DONE
     if not github/ln links: dont display  # DONE
+    just_titles: true/false  # DONE
+    live server  # DONE
+    i18n  # DONE
