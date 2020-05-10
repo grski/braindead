@@ -1,0 +1,20 @@
+{% include 'atoms/header.html' %}
+{% block additional_header %}
+<script>
+    const redirect = () => {
+        const availableLanguage = {{ config.i18n.languages }};
+        const default_language = "{{ config.language }}";
+        const browserLanguage = window.navigator.language.slice(0,2);
+        if (availableLanguage.includes(browserLanguage)) {
+            window.location.replace(`${window.location}${browserLanguage}/`)
+        }
+        else {
+            window.location.replace(`${window.location}${default_language}/`)
+        }
+    };
+</script>
+{% endblock %}
+
+<body onload="redirect()">
+
+{% include 'atoms/footer.html' %}

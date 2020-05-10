@@ -17,11 +17,20 @@ def render_blog() -> None:
     posts: List[dict] = list(reversed(sorted(render_posts(), key=lambda x: x["date"])))
     pages: List[dict] = render_all_pages()
     render_index(posts=posts)
+    render_redirector()
     gather_statics()
     print(
         f"Rendered {len(posts+pages)+1} files! Pages: {len(pages)+1} and posts: {len(posts)}\n"
         f"Took: {time()-started_at:.3f} seconds.\n"
     )
+
+
+def render_redirector(context: dict = None):
+    context = {} if not context else context
+    jinja_context: dict = add_global_context(context)
+    template: Template = jinja_environment.get_template("redirector.html")
+    output: str = render_jinja_template(template=template, context=jinja_context)
+    return save_output(original_file_name="index.html", output=output)
 
 
 def render_all_pages() -> List[dict]:
@@ -65,7 +74,6 @@ def render_markdown_to_html(md: Markdown, filename: str) -> str:
 
 
 def render_index(posts: Iterable[dict]) -> dict:
-    md: Markdown = Markdown(extensions=["tables", "fenced_code", "codehilite", "meta", "footnotes"])
     filename = "index.md"
     additonal_context: dict = add_global_context({"articles": posts})
     return render_page(filename=filename, md=md, additional_context=additonal_context)
