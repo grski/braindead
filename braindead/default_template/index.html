@@ -13,7 +13,7 @@
                 <h2 class="title"><a href="{{ article.url }}">{{ article.title }}</a></h2>
                 <div class="content">
                     {% if not config.just_titles and article.description is not none %}{{ article.description }}{% endif %}
-                    <a class="button is-link" href="{{ article.url }}">Read more</a>
+                    <a class="button is-link" href="{{ article.url }}">{{ "read-more" | i18n(article)) }}</a>
                 </div>
             </article>
 
