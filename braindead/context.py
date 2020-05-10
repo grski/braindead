@@ -1,8 +1,10 @@
+from datetime import date, datetime
 from typing import Dict
 
 from markdown import Markdown
 
 from braindead.constants import BASE_URL, DIST_DIR
+from braindead.i18n import TRANSLATIONS
 
 
 def build_meta_context(md: Markdown) -> Dict[str, str]:
@@ -11,6 +13,11 @@ def build_meta_context(md: Markdown) -> Dict[str, str]:
     post/page Title, Description and so on.
     """
     return {key: "\n".join(value) for key, value in md.Meta.items()}
+
+
+def add_global_context(context: dict) -> dict:
+    """ Wrapper that adds global context: helpers, i18n and so on. """
+    return {"i18n": TRANSLATIONS, **context, "helpers": {"datetime": datetime, "date": date}}
 
 
 def build_article_context(article_html: str, md: Markdown) -> Dict[str, str]:

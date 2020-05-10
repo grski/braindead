@@ -12,3 +12,7 @@ linkedin = ""
 copy_text = "Olaf Górski"
 copy_link = "https://grski.pl"
 language = "en"
+just_titles = 0
+
+[config.i18n]
+languages = ["en","pl"]
