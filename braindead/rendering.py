@@ -26,7 +26,7 @@ def render_blog() -> None:
 
 
 def render_redirector(context: dict = None):
-    context = {} if not context else context
+    context: dict = {} if not context else context
     jinja_context: dict = add_global_context(context)
     template: Template = jinja_environment.get_template("redirector.html")
     output: str = render_jinja_template(template=template, context=jinja_context)

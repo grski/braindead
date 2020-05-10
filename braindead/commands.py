@@ -11,10 +11,7 @@ from braindead.rendering import render_blog
 class RunCommand(Command):
     """
     This runs the engine and builds all the static pages, outputting the to DIST_DIR then serving them with server.
-
-    run
-        {--p|port=1644 : Port that content should be served on}
-
+    run {--p|port=1644 : Port that content should be served on}
     """
 
     def handle(self) -> None:
@@ -35,8 +32,7 @@ class BuildCommand(Command):
 class ServeCommand(Command):
     """
     Serve the files located in DIST_DIR directory at a given port
-    serve
-        {--p|port=1644 : Port that content should be served on}
+    serve {--p|port=1644 : Port that content should be served on}
     """
 
     def handle(self: Command) -> None:

@@ -6,13 +6,13 @@ from braindead.constants import CONFIG, TEMPLATE_DIR
 
 def render_jinja_template(template: Template, context: dict) -> str:
     """ Rendering jinja template with a context and global config. """
-    context_with_globals = {**context, "config": CONFIG}
+    context_with_globals: dict = {**context, "config": CONFIG}
     return template.render(context_with_globals)
 
 
 def add_additional_filters_to_environment(environment: Environment) -> Environment:
     """ Adding additional filters that begin with jinja_ prefix and are defined in jinja_filters.py file"""
-    filters = {
+    filters: dict = {
         jinja_filter: getattr(jinja_filters, jinja_filter)
         for jinja_filter in dir(jinja_filters)
         if jinja_filter.startswith("jinja_")

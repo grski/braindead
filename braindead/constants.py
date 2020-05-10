@@ -2,7 +2,7 @@ import os
 
 import toml
 
-USER_CONFIG_FILE = "pyproject.toml"
+USER_CONFIG_FILE: str = "pyproject.toml"
 
 
 def get_user_config():

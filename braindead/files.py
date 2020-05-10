@@ -36,6 +36,7 @@ def save_output(original_file_name: str, output: str) -> str:
 
 
 def gather_statics() -> None:
-    template_statics = os.path.join(TEMPLATE_DIR, "static")
-    if os.path.exists(template_statics):
-        shutil.copytree(template_statics, os.path.join(DIST_DIR, "static"), dirs_exist_ok=True)
+    """ Gathers statics from template dir and puts them to DIST_DIR """
+    statics_dir: str = os.path.join(TEMPLATE_DIR, "static")
+    if os.path.exists(statics_dir):
+        shutil.copytree(statics_dir, os.path.join(DIST_DIR, "static"), dirs_exist_ok=True)
