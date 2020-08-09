@@ -2,19 +2,12 @@ import os
 
 import toml
 
-USER_CONFIG_FILE: str = "pyproject.toml"
-
-
-def get_user_config():
-    if not os.path.exists(USER_CONFIG_FILE):
-        return {}
-    return toml.load(USER_CONFIG_FILE).get("tool", {}).get("braindead", {}).get("config", {})
-
+from braindead.config import get_user_config, validate_config
 
 PACKAGE_LOCATION: str = os.path.split(os.path.realpath(__file__))[0]
 DEFAULT_CONFIG: dict = toml.load(os.path.join(PACKAGE_LOCATION, "default_config.toml"))["config"]
 USER_CONFIG: dict = get_user_config()
-CONFIG: dict = {**DEFAULT_CONFIG, **USER_CONFIG}
+CONFIG: dict = validate_config({**DEFAULT_CONFIG, **USER_CONFIG})
 BASE_URL: str = CONFIG["base_url"]
 if BASE_URL == "/" or not BASE_URL.startswith("https://") or not BASE_URL.startswith("http://"):
     print(
