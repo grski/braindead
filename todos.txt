@@ -18,6 +18,7 @@ todos:
     navigation
     better config
     url validation
+    language picker
     sitemap generator
     disable i18n option
     write docs about i18n
@@ -25,6 +26,7 @@ todos:
     add docs about helper functions
     documentation: creating templates
     inform that date is a required field
+    different indexes for different languages?
     remember locale selection with local storage
     extend custom functions to allow other helpers
     check if page slug conflicts with article slugs/urls

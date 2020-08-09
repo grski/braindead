@@ -4,6 +4,7 @@ import socketserver
 
 from cleo import Application, Command
 
+from braindead import version
 from braindead.constants import DIST_DIR
 from braindead.rendering import render_blog
 
@@ -29,6 +30,10 @@ class BuildCommand(Command):
         render_blog()
 
 
+class ReusableAddressTCPServer(socketserver.TCPServer):
+    allow_reuse_address = True
+
+
 class ServeCommand(Command):
     """
     Serve the files located in DIST_DIR directory at a given port
@@ -38,7 +43,7 @@ class ServeCommand(Command):
     def handle(self: Command) -> None:
         serve_port = int(self.option("p"))
         Handler: functools.partial = functools.partial(http.server.SimpleHTTPRequestHandler, directory=DIST_DIR)
-        with socketserver.TCPServer(("", serve_port), Handler) as httpd:
+        with ReusableAddressTCPServer(("", serve_port), Handler) as httpd:
             try:
                 self.line(f"\n Serving content at localhost:{serve_port}...")
                 httpd.serve_forever()
@@ -48,7 +53,7 @@ class ServeCommand(Command):
 
 
 def cli() -> int:
-    cleo_application: Application = Application()
+    cleo_application: Application = Application(name="braindead", version=version)
     cleo_application.add(RunCommand())
     cleo_application.add(BuildCommand())
     cleo_application.add(ServeCommand())
