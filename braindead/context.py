@@ -16,16 +16,16 @@ def build_meta_context(md: Markdown) -> Dict[str, str]:
 
 
 def add_global_context(context: dict) -> dict:
-    """ Wrapper that adds global context: helpers, i18n and so on. """
+    """Wrapper that adds global context: helpers, i18n and so on."""
     return {"i18n": TRANSLATIONS, **context, "helpers": {"datetime": datetime, "date": date}}
 
 
 def build_article_context(article_html: str, md: Markdown) -> Dict[str, str]:
-    """ Contant that'll be used to render template with jinja. """
+    """Contant that'll be used to render template with jinja."""
     return {"content": article_html, **build_meta_context(md=md)}
 
 
 def add_url_to_context(jinja_context: dict, new_filename: str) -> dict:
-    """ Builds and adds url for a given page/post to jinja context. """
+    """Builds and adds url for a given page/post to jinja context."""
     jinja_context["url"] = f"{BASE_URL}{new_filename.replace(f'{DIST_DIR}/', '')}"
     return jinja_context
