@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="{{ language | default(config.language) }}">
+
+<head>
+    <title>{{ title | default(config.title) }}{% if config.author %} - {{ config.author }}{% endif %}</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{{ description | default(config.description) }}" />
+
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="{{ config.title }}">
+    <meta property="og:description" content="{{ description | default(config.description) }}">
+    <meta property="og:url" content="{{ config.base_url }}">
+    <meta property="og:site_name" content="{{ config.name }}">
+    <meta property="og:type" content="website">
+    <meta property="article:section" content="">
+    <meta property="og:updated_time" content="{{ date | default(helpers.date.today()) }}T00:00:00Z" />
+
+    <link rel="stylesheet" href="{{ config.base_url }}static/styles/style.min.css" />
+    <link rel="stylesheet" href="{{ config.base_url }}static/styles/highlighting.min.css" />
+    <link rel="shortcut icon" type="image/png" href="{{ config.base_url }}static/favicon.png"/>
+    <meta name="theme-color" content="#ffffff">
+    {% block additional_header %}{% endblock %}
+</head>

@@ -1,3 +1,4 @@
-from braindead.rendering import render_blog
+from braindead.commands import cli
 
-render_blog()
+if __name__ == "__main__":
+    cli()

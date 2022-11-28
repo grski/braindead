@@ -1,28 +1,40 @@
 todos:
     tests
-    just_titles: true/false
-    if not github/ln links: dont display
     header.html
-    <!-- <meta property='og:image' content='{{ site.logo }}'> todo: add  The recommended resolution for the OG image is 1200x627 pixels, the size — up to 5MB.  -->
+    <!-- <meta property='og:image' content='{{ config.logo }}'> todo: add  The recommended resolution for the OG image is 1200x627 pixels, the size — up to 5MB.  -->
     <!-- todo: twitter cards https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started -->
     <!--
-    <link rel="manifest" href="{{ BASE_URL }}static/site.webmanifest">
-    <link rel="mask-icon" href="{{ BASE_URL }}static/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ BASE_URL }}static/styles/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ BASE_URL }}static/styles/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ BASE_URL }}static/favicon-16x16.png">
+    <link rel="manifest" href="{{ config.base_url }}static/config.webmanifest">
+    <link rel="mask-icon" href="{{ config.base_url }}static/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ config.base_url }}static/styles/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ config.base_url }}static/styles/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ config.base_url }}static/favicon-16x16.png">
     -->
 
+    urls
     tags
     tests
     statics
-    pipelines
     navigation
-    documentation
     better config
+    url validation
+    language picker
     sitemap generator
-    support for i18n???
-    naming url with slug
-    support for multiple templates
+    disable i18n option
+    write docs about i18n
+    add hot auto reload during dev
+    add docs about helper functions
+    documentation: creating templates
     inform that date is a required field
-    use pyproject.toml instead of site.toml
+    different indexes for different languages?
+    remember locale selection with local storage
+    extend custom functions to allow other helpers
+    check if page slug conflicts with article slugs/urls
+    add extended i18n to md files (prerender the md with jinja)
+    rendering different sections with different mds in one page
+
+    locale auto redirection for user browser language  # DONE
+    if not github/ln links: dont display  # DONE
+    just_titles: true/false  # DONE
+    live server  # DONE
+    i18n  # DONE

@@ -35,7 +35,11 @@ pip install braindead
 [PyPi page](https://pypi.org/project/braindead/)
 
 # Usage
-Create `index.md` and run `braindead` that's it. You'll find your generated site in `dist` directory.
+Create `index.md` and run `braindead run` that's it. You'll find your generated site in `dist` directory and the site being served at `localhost:1644`.
+To get more context/help and available commands run `braindead` or `braindead help`.
+
+Known commands so far: `run`, `build`, `serve`.
+
 It can be empty or not - your choice. If you want index  to contain just the posts - leave it empty.
 
 That's the minimal setup you need. That'll generate index.html for you, but well, it's not enough, right?
@@ -46,11 +50,11 @@ pages/
 posts/
   post.md
 index.md
-site.toml
+pyproject.toml
 ```
 
 The url for generated html will be `{DIR_LOCATION}/{FILENAME}.html`,
- so url generated will be `{BASE_URL}/{DIR_LOCATION}/{FILENAME}.html` in order to change that, add
+ so url generated will be `{config.base_url}/{DIR_LOCATION}/{FILENAME}.html` in order to change that, add
 ```markdown
 Slug: custom-location
 ```
@@ -71,12 +75,13 @@ All of the metadata used here will be available during given page rendering. You
 
 ## Config
 
-All of the variables that are used to generate the page can be overwritten by creating `site.toml` file, but it's not required to get started.
+All of the variables that are used to generate the page can be overwritten by creating `pyproject.toml` file, but it's not required to get started.
+Example of your `pyproject` `tool.braindead.site` section (these are also the defaults):
 
 ```toml
-BASE_URL = "/"  # give full url ending with slash here - eg. if you host your blog on https://grski.pl/ enter it there.
-
-[site]
+[tool.braindead.site]
+base_url = "" # give full url ending with slash here - eg. if you host your blog on https://grski.pl/ enter it there.
+author = "Olaf Górski"  # author/owner of the site <- will be appended to the title
 title = "Site generated with braindead"  # base title of the website
 description = "Just a description of site generated in braindead"  # description used in the meta tags
 content = ""  # this will display under heading
@@ -87,6 +92,8 @@ github = "https://github.com/grski"  # link to your github
 linkedin = "https://linkedin.com/in/olafgorski"  # link to your li
 copy_text = "Olaf Górski"  # copy text in the footer
 copy_link = "https://grski.pl"  # and copy link of the footer
+language = "en"  # default language set in the top level html lang property
+just_titles = 0  # if set to 1 the index page will only display titles without descriptions on default template
 ```
 
 None of these are required. You can overwrite none, one or more. Your choice.
@@ -121,6 +128,8 @@ Patch for merges to develop, minor for merged to master. Merge to master means r
 And wonderful [poetry](https://github.com/python-poetry/poetry) as dependency manager. BTW pipenv should die.
 
 Code highligthing is done with [pygments](https://github.com/pygments/pygments).
+
+CLI is done with [cleo](https://github.com/sdispater/cleo)
 
 I use type hinting where it's possible.
 

@@ -1,8 +1,8 @@
-BASE_URL = "/"  # give full url ending with slash here
-
-[site]
+[config]
+base_url = "/"  # give full url ending with slash here
 title = "Site generated with braindead"
 description = "Just a description of site generated in braindead"
+author = "Olaf Górski"
 content = ""
 name = "braindeadsite"
 logo = "logo_url"
@@ -11,3 +11,8 @@ github = ""
 linkedin = ""
 copy_text = "Olaf Górski"
 copy_link = "https://grski.pl"
+language = "en"
+just_titles = 0
+
+[config.i18n]
+languages = ["en","pl"]

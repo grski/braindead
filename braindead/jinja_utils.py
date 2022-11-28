@@ -1,20 +1,27 @@
-from jinja2 import Environment, FileSystemLoader, Template, Undefined
+from jinja2 import Environment, FileSystemLoader, Template
 
+from braindead import jinja_filters
 from braindead.constants import CONFIG, TEMPLATE_DIR
 
 
-class SilentUndefined(Undefined):
-    def _fail_with_undefined_error(self, *args, **kwargs) -> None:
-        """ We do not want to fail on not known variables hence this thing."""
-        return None
-
-
 def render_jinja_template(template: Template, context: dict) -> str:
-    """ Rendering jinja template with a context and global config. """
-    context_with_globals = {**context, **CONFIG}
+    """Rendering jinja template with a context and global config."""
+    context_with_globals: dict = {**context, "config": CONFIG}
     return template.render(context_with_globals)
 
 
-jinja_environment: Environment = Environment(  # nosec
-    loader=FileSystemLoader(TEMPLATE_DIR), undefined=SilentUndefined, autoescape=False
+def add_additional_filters_to_environment(environment: Environment) -> Environment:
+    """Adding additional filters that begin with jinja_ prefix and are defined in jinja_filters.py file"""
+    filters: dict = {
+        jinja_filter: getattr(jinja_filters, jinja_filter)
+        for jinja_filter in dir(jinja_filters)
+        if jinja_filter.startswith("jinja_")
+    }
+    for filter_name, filter_function in filters.items():
+        environment.filters[filter_name.replace("jinja_", "")] = filter_function
+    return environment
+
+
+jinja_environment: Environment = add_additional_filters_to_environment(
+    Environment(loader=FileSystemLoader(TEMPLATE_DIR), autoescape=False)  # nosec
 )
