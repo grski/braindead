@@ -12,7 +12,7 @@ def build_meta_context(md: Markdown) -> Dict[str, str]:
     This builds context that we get from Meta items from markdown like
     post/page Title, Description and so on.
     """
-    return {key: "\n".join(value.strip()) for key, value in md.Meta.items()}
+    return {key: "\n".join(value) for key, value in md.Meta.items()}
 
 
 def add_global_context(context: dict) -> dict:
