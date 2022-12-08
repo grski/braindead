@@ -13,7 +13,7 @@ from braindead.markdown_utils import md
 def render_blog() -> None:
     """Renders both pages and posts for the blog and moves them to dist folder."""
     started_at: float = time()
-    posts: List[dict] = list(reversed(sorted(render_posts(), key=lambda x: x.get("date"))))
+    posts: List[dict] = list(reversed(sorted(render_posts(), key=lambda x: x.get("date", ""))))
     pages: List[str] = render_all_pages()
     render_index(posts=posts)
     gather_statics()
@@ -48,6 +48,7 @@ def render_and_save_post(md: Markdown, filename: str) -> dict:
     jinja_context: dict = add_global_context(build_article_context(article_html=article_html, md=md))
     output: str = render_jinja_template(template=template, context=jinja_context)
     new_filename: str = save_output(original_file_name=jinja_context.get("slug", filename), output=output)
+    print(f"Rendering new post: {new_filename} with context: {jinja_context}")
     return add_url_to_context(jinja_context=jinja_context, new_filename=new_filename)
 
 
