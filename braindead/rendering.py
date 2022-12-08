@@ -4,7 +4,6 @@ from typing import Iterable, List
 from jinja2 import Template
 from markdown import Markdown
 
-from braindead.constants import CONFIG
 from braindead.context import add_global_context, add_url_to_context, build_article_context
 from braindead.files import find_all_pages, find_all_posts, gather_statics, save_output
 from braindead.jinja_utils import jinja_environment, render_jinja_template
@@ -12,46 +11,30 @@ from braindead.markdown_utils import md
 
 
 def render_blog() -> None:
-    """Renders both pages and posts for the blog and moves them to dist folder."""
+    """ Renders both pages and posts for the blog and moves them to dist folder."""
     started_at: float = time()
-    posts: List[dict] = list(reversed(sorted(render_posts(), key=lambda x: x["date"])))
-    pages: List[dict] = render_all_pages()
+    posts: List[dict] = list(reversed(sorted(render_posts(), key=lambda x: x.get("Date", x.get("date")))))
+    pages: List[str] = render_all_pages()
     render_index(posts=posts)
-    render_redirector()
     gather_statics()
     print(
-        f"Rendered {len(posts+pages)+1} files! Pages: {len(pages)+1} and posts: {len(posts)}\n"
+        f"Rendered {len(posts)+len(pages)+1} files! Pages: {len(pages)+1} and posts: {len(posts)}\n"
         f"Took: {time()-started_at:.3f} seconds.\n"
     )
 
 
-def render_redirector(context: dict = None):
-    context: dict = {} if not context else context
-    jinja_context: dict = add_global_context(context)
-    template: Template = jinja_environment.get_template("redirector.html")
-    output: str = render_jinja_template(template=template, context=jinja_context)
-    return save_output(original_file_name="index.html", output=output)
-
-
-def render_all_pages() -> List[dict]:
+def render_all_pages() -> List[str]:
     """Rendering of all the pages for the blog. markdown -> html with jinja -> html"""
     return [render_page(filename=filename, md=md) for filename in find_all_pages()]
 
 
-def render_page(filename: str, md: Markdown, additional_context: dict = None) -> dict:
+def render_page(filename: str, md: Markdown, additional_context: dict = None):
     additional_context = additional_context if additional_context else {}
     page_html: str = render_markdown_to_html(md=md, filename=filename)
-    return {
-        language: _render_page(page_html, additional_context, filename, language)
-        for language in CONFIG["i18n"]["languages"]
-    }
-
-
-def _render_page(page_html: str, additional_context: dict, filename: str, language: str):
-    jinja_context: dict = add_global_context({"content": page_html, **additional_context, "language": language})
+    jinja_context: dict = add_global_context({"content": page_html, **additional_context})
     template: Template = jinja_environment.get_template(md.Meta.get("template", ["index.html"])[0])
     output: str = render_jinja_template(template=template, context=jinja_context)
-    return save_output(original_file_name=f'{language}/{jinja_context.get("slug", filename)}', output=output)
+    return save_output(original_file_name=jinja_context.get("slug", filename), output=output)
 
 
 def render_posts() -> List[dict]:
@@ -73,7 +56,8 @@ def render_markdown_to_html(md: Markdown, filename: str) -> str:
     return md.reset().convert(open(filename).read())
 
 
-def render_index(posts: Iterable[dict]) -> dict:
+def render_index(posts: Iterable[dict]) -> str:
+    md: Markdown = Markdown(extensions=["tables", "fenced_code", "codehilite", "meta", "footnotes"])
     filename = "index.md"
-    additonal_context: dict = add_global_context({"articles": posts})
+    additonal_context: dict = {"articles": posts}
     return render_page(filename=filename, md=md, additional_context=additonal_context)

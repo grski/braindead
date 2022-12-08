@@ -5,10 +5,10 @@ flake:
 	flake8 -v ./
 
 isort:
-	isort -rc --check-only --diff ./
+	isort --check-only --diff ./
 
 isort-inplace:
-	isort -rc ./
+	isort ./
 
 bandit:
 	bandit -x './styles/*' -r ./
