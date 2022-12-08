@@ -11,7 +11,7 @@ from braindead.markdown_utils import md
 
 
 def render_blog() -> None:
-    """ Renders both pages and posts for the blog and moves them to dist folder."""
+    """Renders both pages and posts for the blog and moves them to dist folder."""
     started_at: float = time()
     posts: List[dict] = list(reversed(sorted(render_posts(), key=lambda x: x.get("Date", x.get("date")))))
     pages: List[str] = render_all_pages()
