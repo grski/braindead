@@ -14,7 +14,7 @@
     <meta property="og:site_name" content="{{ config.name }}">
     <meta property="og:type" content="website">
     <meta property="article:section" content="">
-    <meta property="og:updated_time" content="{% if date %}{{ date }}{% else %}{{ date.now }}{% endif %}T00:00:00Z" />
+    <meta property="og:updated_time" content="{% if date %}{{ date }}{% else %}{{ helpers.date.now }}{% endif %}T00:00:00Z" />
 
     <link rel="stylesheet" href="{{ config.base_url }}static/styles/style.min.css" />
     <link rel="stylesheet" href="{{ config.base_url }}static/styles/highlighting.min.css" />
