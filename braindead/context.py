@@ -26,6 +26,6 @@ def build_article_context(article_html: str, md: Markdown) -> Dict[str, str]:
 
 
 def add_url_to_context(jinja_context: dict, new_filename: str) -> dict:
-    """Builds and adds url for a given page/post to jinja context."""
+    """Builds and adds urls for a given page/post to jinja context."""
     jinja_context["url"] = f"{BASE_URL}{new_filename.replace(f'{DIST_DIR}/', '')}"
     return jinja_context
