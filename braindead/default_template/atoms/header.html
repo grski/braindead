@@ -11,7 +11,7 @@
     <meta property="og:title" content="{% if title %}{{ title }}{% else %}{{ config.title }}{% endif %}{% if config.author %} - {{ config.author }}{% endif %}">
     <meta property="og:description" content="{% if description %}{{ description }}{% else %}{{ config.description }}{% endif %}">
     <meta property="og:url" content="{{ config.base_url }}">
-    <meta property="og:site_name" content="{{ config.tiitle }}">
+    <meta property="og:site_name" content="{% if title %}{{ title }}{% else %}{{ config.title }}{% endif %}{% if config.author %} - {{ config.author }}{% endif %}">
     <meta property="og:type" content="website">
     <meta property="article:section" content="">
     <meta property="og:updated_time" content="{{ date | default(helpers.date.today()) }}T00:00:00Z" />
