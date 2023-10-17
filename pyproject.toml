@@ -15,7 +15,7 @@ keywords = ["ssg", "static site generator", "braindead"]
 braindead = "braindead.commands:cli"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10"
 jinja2 = "==3.0.3"
 markdown = "^3.4.1"
 pygments = "^2.6.1"
