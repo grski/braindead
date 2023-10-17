@@ -46,7 +46,7 @@ jobs:
           echo ${PART}
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          bumpversion --message '[skip ci] Bump version: {current_version} → {new_version}' --list --verbose ${PART}
+          bumpversion --message '[skip ci] Bump version: {current_version} → {new_version}' --list --verbose patch
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
