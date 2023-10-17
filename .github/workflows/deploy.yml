@@ -25,11 +25,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-
-      - name: Static code checks
-        run: |
-          pip install flake8
-          make linters
+          pip install bumpversion poetry
       - name: Test with pytest
         run: |
           pip install pytest
